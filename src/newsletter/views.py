@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .forms import SignUpForm
+
 
 # Create your views here.
 def home(request):
@@ -8,6 +10,7 @@ def home(request):
 		title = 'Hello {:s}'.format(str(request.user))
 
 	context = {
-		'title': title
+		'title': title,
+		'form': SignUpForm(request.POST or None)
 	}
 	return render(request, "home.html", context)
